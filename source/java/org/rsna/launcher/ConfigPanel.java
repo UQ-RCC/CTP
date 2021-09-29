@@ -1211,6 +1211,7 @@ public class ConfigPanel extends BasePanel {
 							String name = ch.getAttribute("name");
 							String defValue = ch.getAttribute("default");
 							String options = ch.getAttribute("options").trim();
+							boolean password = ch.getAttribute("password").equals("yes");
 							boolean editable = !ch.getAttribute("editable").equals("no");
 
 							//Get the help text if possible
@@ -1224,9 +1225,14 @@ public class ConfigPanel extends BasePanel {
 							if (configValue.equals("")) configValue = defValue;
 
 							if (options.equals("")) {
-								add( new TextAttrPanel(name, configValue, helpText, editable) );
-							}
-							else {
+								if (password) {
+									add( new PasswordAttrPanel(name, configValue, helpText, editable) );
+								}
+								else {
+									add( new TextAttrPanel(name, configValue, helpText, editable) );
+								}
+								}
+						else {
 								//add( new ComboAttrPanel(name, configValue, options, helpText) );
 								add( new ButtonAttrPanel(name, configValue, options, helpText) );
 							}
@@ -1305,6 +1311,27 @@ public class ConfigPanel extends BasePanel {
 		}
 	}
 
+	class PasswordAttrPanel extends AttrPanel {
+		public ConfigPasswordField text;
+		HelpPane help = null;
+		public PasswordAttrPanel(String name, String value, String comment, boolean editable) {
+			super(name);
+			text = new ConfigPasswordField(value);
+			text.setEditable(editable);
+			this.add(text);
+			if ((comment != null) && !comment.trim().equals("")) {
+				this.add( Box.createVerticalStrut(5) );
+				comment = comment.trim().replaceAll("\\s+", " ");
+				help = new HelpPane(comment);
+				this.add(help);
+			}
+			else this.add( Box.createVerticalStrut(5) );
+		}
+		public String getValue() {
+			return text.getText();
+		}
+	}
+
 	class ComboAttrPanel extends AttrPanel {
 		public ConfigComboBox text;
 		HelpPane help = null;
@@ -1364,6 +1391,14 @@ public class ConfigPanel extends BasePanel {
 			super();
 			setText(s);
 			setFont( new Font( "Monospaced", Font.BOLD, 12 ) );
+			setBackground(Color.white);
+		}
+	}
+
+	class ConfigPasswordField extends JPasswordField {
+		public ConfigPasswordField(String s) {
+			super();
+			setText(s);
 			setBackground(Color.white);
 		}
 	}

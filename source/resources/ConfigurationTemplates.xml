@@ -35,16 +35,16 @@ It is preferred because it works with dynamic IP addresses.
 
 			<child name="SSL" required="no" allowMultiples="no">
 				<attr name="keystore" required="no" default="keystore"/>
-				<attr name="keystorePassword" required="no" default="ctpstore"/>
+				<attr name="keystorePassword" required="no" default="ctpstore" password="yes"/>
 				<attr name="truststore" required="no" default=""/>
-				<attr name="truststorePassword" required="no" default=""/>
+				<attr name="truststorePassword" required="no" default="" password="yes"/>
 			</child>
 
 			<child name="ProxyServer" required="no" allowMultiples="no">
 				<attr name="proxyIPAddress" required="no" default=""/>
 				<attr name="proxyPort" required="no" default=""/>
 				<attr name="proxyUsername" required="no" default=""/>
-				<attr name="proxyPassword" required="no" default=""/>
+				<attr name="proxyPassword" required="no" default="" password="yes"/>
 			</child>
 
 			<child name="LDAP" required="no" allowMultiples="no">
@@ -395,7 +395,7 @@ It is preferred because it works with dynamic IP addresses.
 			<attr name="username" required="no" default="">
 				<helptext>The username for authentication, if required by the external system</helptext>
 			</attr>
-			<attr name="password" required="no" default="">
+			<attr name="password" required="no" default="" password="yes">
 				<helptext>The password for authentication, if required by the external system</helptext>
 			</attr>
 			<attr name="interval" required="no" default="10000">
@@ -578,7 +578,7 @@ It is preferred because it works with dynamic IP addresses.
 			<attr name="username" required="yes" default="">
 				<helptext>The username of the account on the SMTP server. If blank, no authentication is done.</helptext>
 			</attr>
-			<attr name="password" required="yes" default="">
+			<attr name="password" required="yes" default="" password="yes">
 				<helptext>The password of the account on the SMTP server (ignored if no authentication is done).</helptext>
 			</attr>
 			<attr name="tls" required="yes" default="yes" options="yes|no">
@@ -850,7 +850,7 @@ It is preferred because it works with dynamic IP addresses.
 				(not required by DICOM STOW-RS, but may be useful in some situations).</helptext>
 			</attr>
 			<attr name="username" required="no" default=""/>
-			<attr name="password" required="no" default=""/>
+			<attr name="password" required="no" default="" password="yes"/>
 			<attr name="dicomScript" required="no" default=""/>
 			<attr name="logDuplicates" required="no" default="no" options="yes|no">
 				<helptext>
@@ -884,7 +884,7 @@ It is preferred because it works with dynamic IP addresses.
 			<attr name="maxUnchunked" required="no" default=""/>
 			<attr name="sendDigestHeader" required="yes" default="no" options="yes|no"/>
 			<attr name="username" required="no" default=""/>
-			<attr name="password" required="no" default=""/>
+			<attr name="password" required="no" default="" password="yes"/>
 			<attr name="acceptDicomObjects" required="no" default="yes" options="yes|no"/>
 			<attr name="acceptXmlObjects" required="no" default="yes" options="yes|no"/>
 			<attr name="acceptZipObjects" required="no" default="yes" options="yes|no"/>
@@ -941,7 +941,7 @@ It is preferred because it works with dynamic IP addresses.
 				<attr name="username" required="yes" default="">
 					<helptext>The username for authentication on the XNAT server.</helptext>
 				</attr>
-				<attr name="password" required="yes" default="">
+				<attr name="password" required="yes" default="" password="yes">
 					<helptext>The password for authentication on the XNAT server.</helptext>
 				</attr>
 			</child>
@@ -990,7 +990,7 @@ It is preferred because it works with dynamic IP addresses.
 				<helptext>URL of the destination FTP site (ftp://ip:port/path)</helptext>
 			</attr>
 			<attr name="username" required="yes" default="username"/>
-			<attr name="password" required="yes" default="password"/>
+			<attr name="password" required="yes" default="password" password="yes"/>
 			<attr name="acceptDicomObjects" required="no" default="yes" options="yes|no"/>
 			<attr name="acceptXmlObjects" required="no" default="yes" options="yes|no"/>
 			<attr name="acceptZipObjects" required="no" default="yes" options="yes|no"/>
@@ -1016,7 +1016,7 @@ It is preferred because it works with dynamic IP addresses.
 			</attr>
 			<attr name="structure" required="yes" default="/"/>
 			<attr name="username" required="yes" default="username"/>
-			<attr name="password" required="yes" default="password"/>
+			<attr name="password" required="yes" default="password" password="yes"/>
 			<attr name="acceptDicomObjects" required="no" default="yes" options="yes|no"/>
 			<attr name="acceptXmlObjects" required="no" default="yes" options="yes|no"/>
 			<attr name="acceptZipObjects" required="no" default="yes" options="yes|no"/>
@@ -1042,7 +1042,7 @@ It is preferred because it works with dynamic IP addresses.
 			</attr>
 			<attr name="structure" required="yes" default="/"/>
 			<attr name="username" required="yes" default="username"/>
-			<attr name="password" required="yes" default="password"/>
+			<attr name="password" required="yes" default="password" password="yes"/>
 			<attr name="acceptDicomObjects" required="no" default="yes" options="yes|no"/>
 			<attr name="acceptXmlObjects" required="no" default="yes" options="yes|no"/>
 			<attr name="acceptZipObjects" required="no" default="yes" options="yes|no"/>
@@ -1065,7 +1065,7 @@ It is preferred because it works with dynamic IP addresses.
 			<attr name="enableExport" required="no" default="yes" options="yes|no"/>
 			<attr name="url" required="yes" default=""/>
 			<attr name="username" required="yes" default=""/>
-			<attr name="password" required="yes" default=""/>
+			<attr name="password" required="yes" default="" password="yes"/>
 			<attr name="xmlScript" required="no" default=""/>
 			<attr name="logResponses" required="yes" default="no" options="all|failed|none">
 				<helptext>Log the contents of the responses from the AIM data service</helptext>
